@@ -32,6 +32,22 @@ gulp.task('build', function() {
     .pipe(gulp.dest('./dist'));
 });
 
+gulp.task('build-openupm', function() {
+  gulp.src(paths.source)
+    .pipe(sass({outputStyle: 'compact', precision: 10})
+      .on('error', sass.logError)
+    )
+    .pipe(autoprefixer())
+    .pipe(csscomb())
+    .pipe(gulp.dest('../openupm/docs/.vuepress/theme/styles/spectre'))
+    // .pipe(cleancss())
+    .pipe(rename({
+      // suffix: '.min'
+      extname: ".styl"
+    }))
+    .pipe(gulp.dest('../openupm/docs/.vuepress/theme/styles/spectre'));
+});
+
 gulp.task('docs', function() {
   gulp.src(paths.doc)
     .pipe(sass({outputStyle: 'compact', precision: 10})
