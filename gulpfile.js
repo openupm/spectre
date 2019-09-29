@@ -39,10 +39,7 @@ gulp.task('build-openupm', function() {
     )
     .pipe(autoprefixer())
     .pipe(csscomb())
-    .pipe(gulp.dest('../openupm/docs/.vuepress/theme/styles/spectre'))
-    // .pipe(cleancss())
     .pipe(rename({
-      // suffix: '.min'
       extname: ".styl"
     }))
     .pipe(gulp.dest('../openupm/docs/.vuepress/theme/styles/spectre'));
